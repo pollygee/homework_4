@@ -40,7 +40,8 @@ end
 
 
 if game.won?
+  puts "Game over, someone won"
 
-elsif game.lost?
-
+elsif game.tie?
+  puts "No more moves available - This game ends in a TIE"
 end

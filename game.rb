@@ -22,7 +22,7 @@ class TicTacToeGame
     end
   end
 	def over?
-    @win || @tie 
+    tie? || won? 
 	end
 
 	def won?
@@ -35,6 +35,7 @@ class TicTacToeGame
         return @win = true
       end
     end
+    return false
 	end
 
 	def test_3_match trio
@@ -43,12 +44,17 @@ class TicTacToeGame
 	end
 
 	def tie?
-    @board.each do |key, value|
-      if value != :x || value != :y #keep going unless the block is still a number
+    #binding.pry
+    @board.each do |key,value|
+      if value.is_a?(Integer)
         return false
-      end    
-      return true
+      end
     end
+    return true
+    #check = @board.has_value?(is_a(Integer))
+    #puts "Check is #{check}"
+    #@board.any?[{|(key,value)| value.is_a(Integer}]
+    
 	end
 
 end
