@@ -28,7 +28,7 @@ class TicTacToeGame
 	def won?
 		# create var for winning combos i.e. [[1,2,3], [4,5,6] etc.]
 		#each over combos call function test_match pass the combo checkng for
-    winning_combos = [[1,2,3],[4,5,6],[7,8,9], [1,4,7],[2,5,8], [3,6,9], [1,5,7], [3,5,7]]
+    winning_combos = [[1,2,3],[4,5,6],[7,8,9], [1,4,7],[2,5,8], [3,6,9], [1,5,9], [3,5,7]]
     winning_combos.each do |combo|
       #binding.pry
       if test_3_match combo
