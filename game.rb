@@ -30,8 +30,8 @@ class TicTacToeGame
 		#each over combos call function test_match pass the combo checkng for
     winning_combos = [[1,2,3],[4,5,6],[7,8,9], [1,4,7],[2,5,8], [3,6,9], [1,5,7], [3,5,7]]
     winning_combos.each do |combo|
+      #binding.pry
       if test_3_match combo
-        puts "Game over, someone won"
         return @win = true
       end
     end
@@ -40,7 +40,7 @@ class TicTacToeGame
 
 	def test_3_match trio
     # take input (a, b, c) check for a==b && b==c
-    trio[0] == trio[1] && trio[1]== trio[2]
+    @board[trio[0]] == @board[trio[1]] && @board[trio[1]]== @board[trio[2]]
 	end
 
 	def tie?
