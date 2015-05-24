@@ -11,7 +11,7 @@ class Player
 
   def switch_player
     if @player == :x
-      return @player = :y
+      return @player = :o
     else
       return @player = :x
     end
