@@ -2,14 +2,12 @@ require 'pry'
 require './game.rb'
 
 class AI
-  def initialize game_board
+  def initialize game
     @center = [5]
     @corner = [1, 3, 7, 9]
     @sides = [2, 4, 6, 8]
-    @board = game.board
+
   end
-
-
 
   def winning_move
     winning_combos = [[1,2,3],[4,5,6],[7,8,9], [1,4,7],[2,5,8], [3,6,9], [1,5,9], [3,5,7]]
@@ -20,8 +18,6 @@ class AI
         return match
       end
   end
-
-
 
   def test_2_match trio
     # look to see that there is only one number in the trio

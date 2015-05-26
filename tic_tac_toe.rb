@@ -23,10 +23,8 @@ if mode == "2"
 
 elsif mode == "1"
   until game.over?
-    #binding.pry
     game.update_board p, p.get_player_move
     system("clear")
-    #binding.pry
     game.display_board
     p.switch_player
     avail_spaces = []
@@ -42,18 +40,14 @@ elsif mode == "1"
     game.display_board
     p.switch_player
   end
-  #p.switch_player
-
 
 else
   puts "You must enter either 1 or 2 for mode"
 end
 
-
 if game.won?
-
   puts "Game Over, Player #{p.player} is the winner!"
-
 elsif game.tie?
   puts "No more moves available - This game ends in a TIE"
 end
+
