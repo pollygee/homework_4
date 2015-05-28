@@ -2,14 +2,6 @@ require './play.rb'
 require './game.rb'
 
 
-p = Player.new
-
-game = TicTacToeGame.new
-
-system("clear")
-print "Which mode?  Enter 1 for 1-player or 2 for 2-player > "
-mode = gets.chomp
-
 game.display_board
 if mode == "2"
 
@@ -40,14 +32,4 @@ elsif mode == "1"
     game.display_board
     p.switch_player
   end
-
-else
-  puts "You must enter either 1 or 2 for mode"
-end
-
-if game.won?
-  puts "Game Over, Player #{p.player} is the winner!"
-elsif game.tie?
-  puts "No more moves available - This game ends in a TIE"
-end
 
