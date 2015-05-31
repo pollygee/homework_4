@@ -3,7 +3,22 @@ require './game.rb'
 require './smart_ai.rb'
 require 'pry'
 
-p = Player.new
+
+class TicTacToe
+  attr_reader :current_player
+  def initialize player1, player2
+    @x = player1
+    @o = player2
+
+    @current_player = @x
+  end
+end
+
+
+p1 = Player.new
+p2 = Player.new
+
+
 game = TicTacToeGame.new
 
 system("clear")

@@ -1,8 +1,9 @@
 require 'minitest/autorun'
 require 'pry'
 
-require './player'
-require './tic_tac_toe'
+require './play'
+require './game'
+require './smart_ai.rb'
 
 class TicTacTest < MiniTest::Test
   def test_new_game
@@ -36,8 +37,8 @@ class TicTacTest < MiniTest::Test
 
     g = TicTacToe.new p1, p2
 
-    g.record_move 5
-    g.record_move 1
+    g.update_board 5
+    g.update_board 1
 
     expected_board = [
       :o, nil, nil,
@@ -53,13 +54,13 @@ class TicTacTest < MiniTest::Test
 
     g = TicTacToe.new p1, p2
 
-    g.record_move 1
-    g.record_move 5
-    g.record_move 2
-    g.record_move 9
+    g.update_board 1
+    g.update_board 5
+    g.update_board 2
+    g.update_board 9
     assert_equal nil, g.winner
     
-    g.record_move 3
+    g.update_board 3
 
     assert_equal p1, g.winner 
   end
