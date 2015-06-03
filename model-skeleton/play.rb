@@ -1,7 +1,6 @@
 require 'pry'
-require './player'
-require './game.rb'
-require './smart_ai.rb'
+require './lib/all'
+require './db/setup'
 
 system("clear")
 print "Which mode?  Enter 1 for 1-player or 2 for 2-player > "

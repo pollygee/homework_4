@@ -1,5 +1,4 @@
 require 'pry'
-require './game.rb'
 
 
 class AI 

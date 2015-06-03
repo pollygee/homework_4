@@ -1,6 +1,5 @@
-require './play.rb'
-require './game.rb'
-require './smart_ai.rb'
+require './lib/all'
+require './db/setup'
 require 'pry'
 
 
