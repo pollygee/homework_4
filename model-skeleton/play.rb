@@ -1,27 +1,52 @@
 require 'pry'
-require './lib/all'
 require './db/setup'
+require './lib/all'
+
+
 
 system("clear")
 print "Which mode?  Enter 1 for 1-player or 2 for 2-player > "
-mode = gets.chomp
 
+mode = gets.chomp
+print "Name for Player 1 > "
+p1_name = gets.chomp
 if mode == "2"
   p2 = Player.new
+  print "Name for Player 2 > "
+  p2_name = gets.chomp
 elsif mode == "1"
   p2 = AI.new 
+  p2_name = "AI"
+
 end 
 p1 = Player.new
+
+
+player1 = User.where(name: p1_name).first
+if player1 
+  puts "Welcome back, #{player1.name}"
+else
+  puts "Welcome, new player.  Enjoy your game"
+  player = User.create! name: p1_name
+end
+
+player2 = User.where(name: p2_name).first
+if player2 && player != "AI"
+  puts "Welcome back, #{player2.name}"
+else
+  player = User.create! name: p2_name
+  if player != "AI"
+    puts "Welcome, new player.  Enjoy your game"
+  end
+end
+
 game = TicTacToe.new p1, p2
+this_game_stat = Stat.create!
+UserStat.create! user_id: player1.id, game_id: this_game_stat.id
+UserStat.create! user_id: player2.id, game_id: this_game_stat.id
 until game.over?
-  # system("clear")
-  # game.display_board
   game.ask_current_player_for_move
   game.switch_player
-  # binding.pry
-  # game.update_board game.current_player, player_move
-  # system("clear")
-  # game.display_board
 end
 
 if game.winner

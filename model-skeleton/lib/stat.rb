@@ -1,3 +1,4 @@
 class Stat < ActiveRecord::Base
-  belongs_to :winner, class_name:"User"
+  has_many :user_stats
+  has_many :users, through: :user_stats
 end
