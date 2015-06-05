@@ -58,7 +58,7 @@ if game.winner
     elsif game.winner == "O"
       w_id = User.where(name: player2.name).pluck(:id)
       l_id = User.where(name: player1.name).pluck(:id)
-    end
+    
     g = Stat.last
     g.looser_id = l_id[0]
     g.winner_id = w_id[0]
@@ -66,5 +66,15 @@ if game.winner
   elsif game.tie?
     puts "No more moves the game ends in a TIE."
   end
+end
+
+
+if player.name != "AI"
+  puts "Player Stats"
+  puts player1.name + " Wins: #{Stat.where(winner_id: player1.id).count}" + " Losses: #{Stat.where(looser_id: player1.id).count}"
+  puts player2.name + " Wins: #{Stat.where(winner_id: player2.id).count}" + " Losses: #{Stat.where(looser_id: player2.id).count}"
+end
+
+
 
 
