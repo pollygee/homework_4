@@ -27,15 +27,15 @@ if player1
   puts "Welcome back, #{player1.name}"
 else
   puts "Welcome, new player.  Enjoy your game"
-  player = User.create! name: p1_name
+  player1 = User.create! name: p1_name
 end
 
 player2 = User.where(name: p2_name).first
-if player2 && player != "AI"
+if player2 && player2 != "AI"
   puts "Welcome back, #{player2.name}"
 else
-  player = User.create! name: p2_name
-  if player != "AI"
+  player2 = User.create! name: p2_name
+  if player2 != "AI"
     puts "Welcome, new player.  Enjoy your game"
   end
 end
@@ -52,6 +52,17 @@ end
 if game.winner
     game.display_board
     puts "#{game.winner} wins"
+    if game.winner == "X"
+      w_id = User.where(name: player1.name).pluck(:id)
+      l_id = User.where(name: player2.name).pluck(:id)
+    elsif game.winner == "O"
+      w_id = User.where(name: player2.name).pluck(:id)
+      l_id = User.where(name: player1.name).pluck(:id)
+    end
+    g = Stat.last
+    g.looser_id = l_id[0]
+    g.winner_id = w_id[0]
+    g.save
   elsif game.tie?
     puts "No more moves the game ends in a TIE."
   end
